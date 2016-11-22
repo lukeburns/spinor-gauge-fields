@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{amsmath}
+
+\title{Spinor gauge fields}
+\author{Luke Burns}
+
+\begin{document}
+\maketitle
+
+Let $\psi \in G_{1,3}$, and consider equations that can be written in the form
+
+\begin{equation}
+  \nabla \psi = f(\psi; x).\label{eq}
+\end{equation}
+
+A general local transformation will have the form
+
+\begin{equation}
+  \psi \mapsto \psi e^{\phi(x)},\label{transform}
+\end{equation}
+
+where $\phi \in G_{1,3}$. This transformation contributes an extra term to Equation \ref{eq} in the following way.
+
+\begin{equation}
+  \nabla (\psi e^{\phi}) = \nabla \psi e^{\phi} + \dot \nabla \psi \dot \phi e^{\phi}.\label{contribution}
+\end{equation}
+
+To make this equation invariant under these transformations requires the introduction of a covariant derivative with an added gauge field that transforms in such a way to absorb these contributions, the grade of which is determined by $\nabla$ and $\phi$ in the second term on the RHS of Equation \ref{contribution}.
+
+Call the covariant derivative $D$. Its action on $\psi$ will be of the form
+
+\begin{equation}
+  D \psi = \nabla \psi + g(\psi; x),\label{covariant-derivative}
+\end{equation}
+
+where $g$ is a function involving the gauge field.
+
+As an example, if $\psi$ is a spinor and $\phi(x) = i \alpha(x)$ for a constant bivector $i$ and a scalar field $\alpha$, as in Dirac theory, then Equation \ref{contribution} becomes
+
+\begin{equation}
+  \nabla (\psi e^{i \alpha}) = \nabla \psi e^{i \alpha} + \nabla \alpha \psi e^{i \alpha} i.\label{bivector-contribution}
+\end{equation}
+
+In this case, $g$ might be given by
+
+\begin{equation}
+  g(\psi; x) = e A \psi i,
+\end{equation}
+
+where $A$ transforms as 
+
+\begin{equation}
+  A \mapsto A - \nabla \alpha, \label{transform-example}
+\end{equation}
+
+so that Equation \ref{covariant-derivative} is
+
+\begin{equation}
+  D \psi = \nabla \psi + e A \psi i.\label{covariant-derivative-example}
+\end{equation}
+
+Since $A$ transforms as in Equation \ref{transform-example} and $\nabla \alpha$ is a vector, $A$ must also be a vector (this argument is made by Doran and Lasenby in Section 13.3.3 in GAP).
+
+We could equally well talk about the related field
+
+\begin{equation}
+  M = e A \psi i \psi^{-1} \label{M-field-example}
+\end{equation} 
+
+instead of $A$, that transforms as
+
+\begin{equation}
+  M \mapsto M - \nabla \alpha \psi i \psi^{-1},
+\end{equation}
+
+so that the covariant derivative can instead be written as 
+
+\begin{equation}
+  D \psi = (\nabla + M) \psi.
+\end{equation}
+
+$M$ can be rightfully called a gauge field, because it performs the same function as $A$. In either case, the grade of the gauge field $A$, or the related gauge field $M$, is odd. If it were even, then it would be a spinor field (i.e. a fermionic field).\footnote{If bosonic gauge fields are always odd valued, I'm curious to know if one could exploit the isomorphism between even and odd fields to identify a relationship between bosonic and fermionic gauge fields.}
+
+Consider a less specific example, where $\psi$ is simply taken to be invertible. Then Equation \ref{contribution} can be generally written in the form
+
+\begin{equation}
+  \nabla (\psi e^\phi) = \nabla \psi e^\phi + M_0 \psi e^\phi,
+\end{equation}
+
+where
+
+\begin{align}
+  M_0 &= \dot \nabla (\psi \dot \phi \psi^{-1}).
+\end{align}
+
+Then the gauge field $M$ (analogous to $M$ in Equation \ref{M-field-example}) must transform as
+
+\begin{equation}
+  M \mapsto M - M_0
+\end{equation}
+
+and have the same grade as $M_0$.
+
+The key point: \emph{if $\phi$ has even grade, then $M$ (the gauge field) has odd grade, and if $\phi$ has odd grade, then $M$ has even grade.} Usually, gauge transformations $e^\phi$ are even (i.e. spinors), and hence the corresponding gauge fields $M$ are odd valued. On the other hand, if $\phi$ is odd, then $e^\phi$ is odd, and the corresponding gauge field $M$ is even valued (i.e. a spinor). In this case, the gauge field could be used to describe fermions. The most immediate question that arises is, what do odd transformations mean?\footnote{Could one use the isomorphism between even and odd fields to make sense of odd valued transformations?}
+
+\end{document}
